@@ -1,10 +1,16 @@
-<h1>Welcome to MyTeam</h1>
+<!-- welcome/index.html.erb -->
 
-<% if coach_signed_in? %>
-  <p>Welcome, <%= current_coach.first_name %>! You are logged in.</p>
-  <%= button_to "Sign Out", destroy_coach_session_path, method: :delete, class: "btn btn-danger" %>
-<% end %>
+<div class="container d-flex justify-content-center" style="height: 100vh;">
+  <div class="text-center">
+    <h1>Welcome to MyTeam</h1>
 
-<hr>
+    <% if coach_signed_in? %>
+      <p>Welcome, <%= current_coach.first_name %>! You are logged in.</p>
+      <%= button_to "Sign Out", destroy_coach_session_path, method: :delete, class: "btn btn-danger" %>
+    <% end %>
 
-<%= link_to "View Teams", teams_path, class: "btn btn-info" %>
+    <hr>
+
+    <%= link_to "View Teams", teams_path, class: "btn btn-info" %>
+  </div>
+</div>
