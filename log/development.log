@@ -472,3 +472,183 @@ Completed 200 OK in 1732ms (Views: 1203.6ms | ActiveRecord: 78.4ms | Allocations
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
   [1m[36mPlayer Create (5.9ms)[0m  [1m[32mINSERT INTO "players" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["first_name", "Eve"], ["last_name", "Black"], ["email", "eve@example.com"], ["created_at", "2024-11-16 00:14:50.091653"], ["updated_at", "2024-11-16 00:14:50.091653"]]
   [1m[36mTRANSACTION (2.2ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/teams" for 172.17.0.1 at 2024-11-16 00:15:45 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (5.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TeamsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering teams/index.html.erb within layouts/application
+  [1m[36mTeam Load (3.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/views/teams/index.html.erb:6
+  Rendered teams/index.html.erb within layouts/application (Duration: 90.8ms | Allocations: 2626)
+  Rendered layout layouts/application.html.erb (Duration: 500.7ms | Allocations: 20846)
+Completed 200 OK in 778ms (Views: 473.2ms | ActiveRecord: 66.8ms | Allocations: 33345)
+
+
+Started GET "/teams/new" for 172.17.0.1 at 2024-11-16 00:15:48 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TeamsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering teams/new.html.erb within layouts/application
+  [1m[36mPlayer Load (0.7ms)[0m  [1m[34mSELECT "players".* FROM "players"[0m
+  ↳ app/views/teams/_form.html.erb:20
+  Rendered teams/_form.html.erb (Duration: 113.1ms | Allocations: 13182)
+  Rendered teams/new.html.erb within layouts/application (Duration: 131.4ms | Allocations: 13486)
+  Rendered layout layouts/application.html.erb (Duration: 183.4ms | Allocations: 14383)
+Completed 200 OK in 218ms (Views: 179.7ms | ActiveRecord: 10.5ms | Allocations: 20113)
+
+
+Started POST "/teams" for 172.17.0.1 at 2024-11-16 00:16:10 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TeamsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "team"=>{"name"=>"Chelsea", "player_ids"=>["", "1", "2", "3", "4"]}, "commit"=>"Create Team"}
+  [1m[36mPlayer Load (1.2ms)[0m  [1m[34mSELECT "players".* FROM "players" WHERE "players"."id" IN (?, ?, ?, ?)[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4]]
+  ↳ app/controllers/teams_controller.rb:24:in `create'
+Completed 500 Internal Server Error in 66ms (ActiveRecord: 2.9ms | Allocations: 5645)
+
+
+  
+NameError (undefined local variable or method `current_coach' for #<TeamsController:0x0000000000c3c8>):
+  
+app/controllers/teams_controller.rb:25:in `create'
+Started GET "/coaches" for 172.17.0.1 at 2024-11-16 00:48:21 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (5.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CoachesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/index.html.erb within layouts/application
+  [1m[36mCoach Load (5.3ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches"[0m
+  ↳ app/views/coaches/index.html.erb:6
+  Rendered coaches/_coach.html.erb (Duration: 5.3ms | Allocations: 232)
+  Rendered coaches/index.html.erb within layouts/application (Duration: 146.5ms | Allocations: 8689)
+  Rendered layout layouts/application.html.erb (Duration: 532.0ms | Allocations: 26864)
+Completed 200 OK in 794ms (Views: 500.9ms | ActiveRecord: 69.6ms | Allocations: 37476)
+
+
+Started GET "/coaches/1" for 172.17.0.1 at 2024-11-16 00:48:24 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CoachesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCoach Load (0.9ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/coaches_controller.rb:63:in `set_coach'
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/show.html.erb within layouts/application
+  Rendered coaches/_coach.html.erb (Duration: 0.1ms | Allocations: 20)
+  Rendered coaches/show.html.erb within layouts/application (Duration: 7.4ms | Allocations: 663)
+  Rendered layout layouts/application.html.erb (Duration: 60.4ms | Allocations: 1555)
+Completed 200 OK in 100ms (Views: 62.9ms | ActiveRecord: 0.9ms | Allocations: 4109)
+
+
+Started DELETE "/coaches/1" for 172.17.0.1 at 2024-11-16 00:48:26 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CoachesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mCoach Load (1.1ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/coaches_controller.rb:63:in `set_coach'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/coaches_controller.rb:52:in `destroy'
+  [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."coach_id" = ?[0m  [["coach_id", 1]]
+  ↳ app/controllers/coaches_controller.rb:52:in `destroy'
+  [1m[36mCoach Destroy (0.9ms)[0m  [1m[31mDELETE FROM "coaches" WHERE "coaches"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/coaches_controller.rb:52:in `destroy'
+  [1m[36mTRANSACTION (15.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/coaches_controller.rb:52:in `destroy'
+Redirected to http://localhost:3000/coaches
+Completed 303 See Other in 111ms (ActiveRecord: 21.0ms | Allocations: 8803)
+
+
+Started GET "/coaches" for 172.17.0.1 at 2024-11-16 00:48:27 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CoachesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/index.html.erb within layouts/application
+  [1m[36mCoach Load (2.8ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches"[0m
+  ↳ app/views/coaches/index.html.erb:6
+  Rendered coaches/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 612)
+  Rendered layout layouts/application.html.erb (Duration: 54.6ms | Allocations: 1506)
+Completed 200 OK in 59ms (Views: 53.8ms | ActiveRecord: 2.8ms | Allocations: 1749)
+
+
+Started GET "/coaches" for 172.17.0.1 at 2024-11-16 00:53:38 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate
+
+You have 1 pending migration:
+
+db/migrate/20241116004927_remove_email_from_coaches.rb
+
+
+):
+  
+activerecord (7.1.4.2) lib/active_record/migration.rb:755:in `check_pending_migrations'
+activerecord (7.1.4.2) lib/active_record/migration.rb:644:in `block (2 levels) in call'
+activesupport (7.1.4.2) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (7.1.4.2) lib/active_record/migration.rb:649:in `block in call'
+activerecord (7.1.4.2) lib/active_record/migration.rb:641:in `synchronize'
+activerecord (7.1.4.2) lib/active_record/migration.rb:641:in `call'
+actionpack (7.1.4.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.4.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.4.2) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.4.2) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:19:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.4.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.4.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.4.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.4.2) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.4.2) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.4.2) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.4.2) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.4.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.4.2) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.4.2) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.8) lib/rack/method_override.rb:28:in `call'
+rack (3.1.8) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.4.2) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.4.2) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.4.2) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.4.2) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.8) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.4.2) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.4.2) lib/rails/engine.rb:536:in `call'
+puma (6.4.3) lib/puma/configuration.rb:272:in `call'
+puma (6.4.3) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.3) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.3) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.3) lib/puma/server.rb:464:in `process_client'
+puma (6.4.3) lib/puma/server.rb:245:in `block in run'
+puma (6.4.3) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+  [1m[36mActiveRecord::InternalMetadata Load (5.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemoveEmailFromCoaches (20241116004927)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acoaches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar DEFAULT NULL, "last_name" varchar DEFAULT NULL, "email" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "acoaches" ("id","first_name","last_name","email","created_at","updated_at")
+                     SELECT "id","first_name","last_name","email","created_at","updated_at" FROM "coaches"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "coaches"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "coaches" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar DEFAULT NULL, "last_name" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "coaches" ("id","first_name","last_name","created_at","updated_at")
+                     SELECT "id","first_name","last_name","created_at","updated_at" FROM "acoaches"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "acoaches"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241116004927') RETURNING "version"[0m
+  [1m[36mTRANSACTION (17.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m

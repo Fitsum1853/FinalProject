@@ -65,6 +65,6 @@ class CoachesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def coach_params
-      params.require(:coach).permit(:first_name, :last_name, :email)
+      params.require(:coach).permit(:first_name, :last_name)
     end
 end
