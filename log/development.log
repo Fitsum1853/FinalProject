@@ -652,3 +652,82 @@ Migrating to RemoveEmailFromCoaches (20241116004927)
   [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241116004927') RETURNING "version"[0m
   [1m[36mTRANSACTION (17.8ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/coaches" for 172.17.0.1 at 2024-11-16 00:54:35 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CoachesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/index.html.erb within layouts/application
+  [1m[36mCoach Load (5.4ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches"[0m
+  ↳ app/views/coaches/index.html.erb:6
+  Rendered coaches/index.html.erb within layouts/application (Duration: 88.9ms | Allocations: 2452)
+  Rendered layout layouts/application.html.erb (Duration: 435.5ms | Allocations: 20661)
+Completed 200 OK in 640ms (Views: 382.3ms | ActiveRecord: 69.2ms | Allocations: 29179)
+
+
+Started GET "/coaches/new" for 172.17.0.1 at 2024-11-16 00:54:38 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CoachesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/new.html.erb within layouts/application
+  Rendered coaches/_form.html.erb (Duration: 25.8ms | Allocations: 1859)
+  Rendered coaches/new.html.erb within layouts/application (Duration: 64.7ms | Allocations: 2127)
+  Rendered layout layouts/application.html.erb (Duration: 119.0ms | Allocations: 3019)
+Completed 200 OK in 160ms (Views: 120.9ms | ActiveRecord: 4.9ms | Allocations: 8188)
+
+
+  [1m[36mActiveRecord::InternalMetadata Load (6.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDeviseToCoaches (20241116010456)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (3.4ms)[0m  [1m[35mALTER TABLE "coaches" ADD "email" varchar DEFAULT '' NOT NULL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "coaches" ADD "encrypted_password" varchar DEFAULT '' NOT NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "coaches" ADD "reset_password_token" varchar[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "coaches" ADD "reset_password_sent_at" datetime(6)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "coaches" ADD "remember_created_at" datetime(6)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_coaches_on_email" ON "coaches" ("email")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_coaches_on_reset_password_token" ON "coaches" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241116010456') RETURNING "version"[0m
+  [1m[36mTRANSACTION (18.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/rails/info/routes" for 172.17.0.1 at 2024-11-16 01:08:03 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::InfoController#routes as HTML
+  Rendering layout /usr/local/bundle/gems/railties-7.1.4.2/lib/rails/templates/layouts/application.html.erb
+  Rendering /usr/local/bundle/gems/railties-7.1.4.2/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /usr/local/bundle/gems/actionpack-7.1.4.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [68 times] (Duration: 13.1ms | Allocations: 17091)
+  Rendered /usr/local/bundle/gems/actionpack-7.1.4.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (Duration: 21.3ms | Allocations: 892)
+  Rendered /usr/local/bundle/gems/railties-7.1.4.2/lib/rails/templates/rails/info/routes.html.erb within layouts/application (Duration: 44.3ms | Allocations: 24324)
+  Rendered layout /usr/local/bundle/gems/railties-7.1.4.2/lib/rails/templates/layouts/application.html.erb (Duration: 46.9ms | Allocations: 24616)
+Completed 200 OK in 285ms (Views: 72.8ms | ActiveRecord: 0.0ms | Allocations: 29527)
+
+
+Started GET "//coaches/sign_up" for 172.17.0.1 at 2024-11-16 01:08:48 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /usr/local/bundle/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /usr/local/bundle/gems/devise-4.9.4/app/views/devise/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 212)
+  Rendered /usr/local/bundle/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.8ms | Allocations: 507)
+  Rendered /usr/local/bundle/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 93.1ms | Allocations: 3459)
+  Rendered layout layouts/application.html.erb (Duration: 436.2ms | Allocations: 21415)
+Completed 200 OK in 573ms (Views: 475.8ms | ActiveRecord: 64.0ms | Allocations: 32091)
+
+
+Started POST "/coaches" for 172.17.0.1 at 2024-11-16 01:10:27 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "coach"=>{"email"=>"Jose@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCoach Exists? (26.4ms)[0m  [1m[34mSELECT 1 AS one FROM "coaches" WHERE "coaches"."email" = ? LIMIT ?[0m  [["email", "jose@gmail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  Rendering layout layouts/application.html.erb
+  Rendering /usr/local/bundle/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /usr/local/bundle/gems/devise-4.9.4/app/views/devise/shared/_error_messages.html.erb (Duration: 1.2ms | Allocations: 846)
+  Rendered /usr/local/bundle/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 70)
+  Rendered /usr/local/bundle/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1730)
+  Rendered layout layouts/application.html.erb (Duration: 58.9ms | Allocations: 2631)
+Completed 422 Unprocessable Content in 485ms (Views: 61.9ms | ActiveRecord: 26.7ms | Allocations: 12734)
+
+
