@@ -1,16 +1,24 @@
 Rails.application.routes.draw do
-  devise_for :coaches
+  # Devise routes for coaches
+  devise_for :coaches, controllers: {
+    registrations: 'coaches/registrations',
+    sessions: 'coaches/sessions',
+    passwords: 'coaches/passwords'
+  }
+
+  # Root and Welcome page
   root 'welcome#index'
-  get 'welcome/index'
-  resources :events
-  resources :teams
+
+  # Public routes
+  resources :teams, only: [:index, :show] do
+    resources :events, only: [:index, :show]
+  end
+
+  # Admin routes
+  resources :events, except: [:index, :show]
+  resources :teams, except: [:index, :show]
   resources :coaches
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  # Health check
   get "up" => "rails/health#show", as: :rails_health_check
-
-  # Defines the root path route ("/")
-  # root "posts#index"
 end

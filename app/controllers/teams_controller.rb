@@ -1,9 +1,14 @@
 class TeamsController < ApplicationController
+  before_action :authenticate_coach!, except: [:index, :show]
   before_action :set_team, only: %i[ show edit update destroy ]
 
   # GET /teams or /teams.json
   def index
-    @teams = Team.all
+    if coach_signed_in?
+      @teams = current_coach.teams
+    else
+      @teams = Team.all
+    end
   end
 
   # GET /teams/1 or /teams/1.json

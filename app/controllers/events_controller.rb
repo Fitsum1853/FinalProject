@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :authenticate_coach!, except: [:index, :show]
   before_action :set_event, only: %i[ show edit update destroy ]
 
   # GET /events or /events.json
@@ -22,7 +23,16 @@ class EventsController < ApplicationController
   # POST /events or /events.json
   def create
     @event = Event.new(event_params)
-
+    
+    if params[:event][:team_id].present?
+      @event.team = Team.find_by(id: params[:event][:team_id])
+      unless @event.team
+        @event.errors.add(:team, "is invalid")
+      end
+    else
+      @event.errors.add(:team, "must be selected")
+    end
+    
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: "Event was successfully created." }

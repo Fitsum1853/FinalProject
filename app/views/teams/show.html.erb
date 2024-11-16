@@ -8,3 +8,24 @@
 
   <%= button_to "Destroy this team", @team, method: :delete %>
 </div>
+
+<h1>Team: <%= @team.name %></h1>
+
+<p>Coach: <%= @team.coach.first_name %> <%= @team.coach.last_name %></p>
+
+<h2>Events</h2>
+<% if @team.events.any? %>
+  <ul>
+    <% @team.events.each do |event| %>
+      <li>
+        <strong><%= event.name %></strong> - 
+        <%= event.date.strftime("%B %d, %Y %I:%M %p") %> at 
+        <%= event.location %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No events scheduled for this team.</p>
+<% end %>
+
+<%= link_to "Back to Teams", teams_path, class: "btn btn-secondary" %>

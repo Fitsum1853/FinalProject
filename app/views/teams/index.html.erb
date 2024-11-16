@@ -2,13 +2,21 @@
 
 <h1>Teams</h1>
 
-<div id="teams">
-  <% @teams.each do |team| %>
-    <%= render team %>
-    <p>
-      <%= link_to "Show this team", team %>
-    </p>
-  <% end %>
-</div>
+<% @teams.each do |team| %>
+  <div class="team">
+    <h2><%= team.name %></h2>
+    <p><strong>Coach:</strong> <%= team.coach.first_name %> <%= team.coach.last_name %></p>
+     <%= link_to 'View Events', team_events_path(team) %>
+     <%= link_to 'Back to Welcome Page', root_path, class: 'btn btn-primary' %>
 
-<%= link_to "New team", new_team_path %>
+    <% if coach_signed_in? %>
+      <%= link_to 'View Events', team_events_path(team) %> | 
+      <%= link_to 'Show this team', team_path(team) %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if coach_signed_in? %>
+  <%= link_to 'New Team', new_team_path %>
+  <%= link_to 'Back to Welcome Page', root_path, class: 'btn btn-primary' %>
+<% end %>

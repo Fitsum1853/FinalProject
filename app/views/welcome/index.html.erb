@@ -1,2 +1,10 @@
-<h1>Welcome to the Sports Management App</h1>
-<%= link_to 'Add a New User', new_user_path %>
+<h1>Welcome to MyTeam</h1>
+
+<% if coach_signed_in? %>
+  <p>Welcome, <%= current_coach.first_name %>! You are logged in.</p>
+  <%= button_to "Sign Out", destroy_coach_session_path, method: :delete, class: "btn btn-danger" %>
+<% end %>
+
+<hr>
+
+<%= link_to "View Teams", teams_path, class: "btn btn-info" %>

@@ -10,9 +10,16 @@
   </head>
 
   <body>
-    <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
+    <% if coach_signed_in? %>
+      <%= button_to "Sign Out", destroy_coach_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign In", new_coach_session_path %>
+      <%= link_to "Sign Up", new_coach_registration_path %>
+    <% end %>
+
+    <%= yield %>
   </body>
 </html>

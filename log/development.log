@@ -731,3 +731,459 @@ Processing by Devise::RegistrationsController#create as HTML
 Completed 422 Unprocessable Content in 485ms (Views: 61.9ms | ActiveRecord: 26.7ms | Allocations: 12734)
 
 
+Started POST "/coaches" for 172.17.0.1 at 2024-11-16 19:56:04 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (13.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "coach"=>{"email"=>"Jose@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCoach Exists? (11.7ms)[0m  [1m[34mSELECT 1 AS one FROM "coaches" WHERE "coaches"."email" = ? LIMIT ?[0m  [["email", "jose@gmail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mrollback transaction[0m
+  Rendering layout layouts/application.html.erb
+  Rendering /usr/local/bundle/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /usr/local/bundle/gems/devise-4.9.4/app/views/devise/shared/_error_messages.html.erb (Duration: 1.8ms | Allocations: 1200)
+  Rendered /usr/local/bundle/gems/devise-4.9.4/app/views/devise/shared/_links.html.erb (Duration: 1.1ms | Allocations: 513)
+  Rendered /usr/local/bundle/gems/devise-4.9.4/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 80.3ms | Allocations: 4224)
+  Rendered layout layouts/application.html.erb (Duration: 777.2ms | Allocations: 22498)
+Completed 422 Unprocessable Content in 1749ms (Views: 988.7ms | ActiveRecord: 111.0ms | Allocations: 44980)
+
+
+Started POST "/coaches" for 172.17.0.1 at 2024-11-16 20:00:55 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Coaches::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "coach"=>{"email"=>"Jose@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCoach Exists? (12.0ms)[0m  [1m[34mSELECT 1 AS one FROM "coaches" WHERE "coaches"."email" = ? LIMIT ?[0m  [["email", "jose@gmail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mrollback transaction[0m
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/registrations/new.html.erb within layouts/application
+  Rendered coaches/shared/_error_messages.html.erb (Duration: 10.1ms | Allocations: 856)
+  Rendered coaches/registrations/new.html.erb within layouts/application (Duration: 45.4ms | Allocations: 2937)
+  Rendered layout layouts/application.html.erb (Duration: 48.1ms | Allocations: 3029)
+Completed 500 Internal Server Error in 624ms (ActiveRecord: 119.8ms | Allocations: 14136)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `form' for #<ActionView::Base:0x00000000012f70>):
+     5: 
+     6:   <div>
+     7:     <%= f.label :first_name, style: "display: block" %>
+     8:     <%= form.text_field :first_name %>
+     9:   </div>
+    10: 
+    11:   <div>
+  
+app/views/coaches/registrations/new.html.erb:8
+app/views/coaches/registrations/new.html.erb:3
+Started GET "/coaches/sign_up" for 172.17.0.1 at 2024-11-16 20:01:45 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Coaches::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/registrations/new.html.erb within layouts/application
+  Rendered coaches/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 13)
+  Rendered coaches/registrations/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1388)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 1479)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms | Allocations: 2068)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `form' for #<ActionView::Base:0x000000000131a0>):
+     5: 
+     6:   <div>
+     7:     <%= f.label :first_name, style: "display: block" %>
+     8:     <%= form.text_field :first_name %>
+     9:   </div>
+    10: 
+    11:   <div>
+  
+app/views/coaches/registrations/new.html.erb:8
+app/views/coaches/registrations/new.html.erb:3
+Started GET "/coaches/sign_up" for 172.17.0.1 at 2024-11-16 20:02:53 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Coaches::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/registrations/new.html.erb within layouts/application
+  Rendered coaches/shared/_error_messages.html.erb (Duration: 8.8ms | Allocations: 198)
+  Rendered coaches/shared/_links.html.erb (Duration: 8.1ms | Allocations: 493)
+  Rendered coaches/registrations/new.html.erb within layouts/application (Duration: 75.4ms | Allocations: 2552)
+  Rendered layout layouts/application.html.erb (Duration: 178.4ms | Allocations: 3714)
+Completed 200 OK in 385ms (Views: 295.6ms | ActiveRecord: 119.4ms | Allocations: 9837)
+
+
+Started POST "/coaches" for 172.17.0.1 at 2024-11-16 20:03:10 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Coaches::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "coach"=>{"first_name"=>"Jose", "last_name"=>"Mourinho", "email"=>"Jose@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCoach Exists? (12.8ms)[0m  [1m[34mSELECT 1 AS one FROM "coaches" WHERE "coaches"."email" = ? LIMIT ?[0m  [["email", "jose@gmail.com"], ["LIMIT", 1]]
+  [1m[36mCoach Create (1.1ms)[0m  [1m[32mINSERT INTO "coaches" ("first_name", "last_name", "created_at", "updated_at", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["first_name", "Jose"], ["last_name", "Mourinho"], ["created_at", "2024-11-16 20:03:11.612516"], ["updated_at", "2024-11-16 20:03:11.612516"], ["email", "jose@gmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (107.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 470ms (ActiveRecord: 120.9ms | Allocations: 7895)
+
+
+Started GET "/" for 172.17.0.1 at 2024-11-16 20:03:11 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 8.8ms | Allocations: 1105)
+  Rendered layout layouts/application.html.erb (Duration: 12.4ms | Allocations: 1197)
+Completed 500 Internal Server Error in 67ms (ActiveRecord: 0.0ms | Allocations: 1882)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_user_path' for #<ActionView::Base:0x00000000018a88>):
+    1: <h1>Welcome to the Sports Management App</h1>
+    2: <%= link_to 'Add a New User', new_user_path %>
+  
+app/views/welcome/index.html.erb:2
+Started GET "/" for 172.17.0.1 at 2024-11-16 20:04:48 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CoachesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/index.html.erb within layouts/application
+  [1m[36mCoach Load (6.8ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches"[0m
+  ↳ app/views/coaches/index.html.erb:6
+  Rendered coaches/_coach.html.erb (Duration: 8.1ms | Allocations: 182)
+  Rendered coaches/index.html.erb within layouts/application (Duration: 178.0ms | Allocations: 5981)
+  Rendered layout layouts/application.html.erb (Duration: 275.8ms | Allocations: 7153)
+Completed 200 OK in 355ms (Views: 124.3ms | ActiveRecord: 175.5ms | Allocations: 8919)
+
+
+Started GET "/coaches/1" for 172.17.0.1 at 2024-11-16 20:05:00 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CoachesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCoach Load (1.5ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/coaches_controller.rb:63:in `set_coach'
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/show.html.erb within layouts/application
+  Rendered coaches/_coach.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered coaches/show.html.erb within layouts/application (Duration: 13.5ms | Allocations: 661)
+  Rendered layout layouts/application.html.erb (Duration: 99.6ms | Allocations: 1558)
+Completed 200 OK in 145ms (Views: 103.9ms | ActiveRecord: 1.5ms | Allocations: 3005)
+
+
+Started GET "/coaches" for 172.17.0.1 at 2024-11-16 20:05:51 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CoachesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/index.html.erb within layouts/application
+  [1m[36mCoach Load (1.2ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches"[0m
+  ↳ app/views/coaches/index.html.erb:6
+  Rendered coaches/_coach.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered coaches/index.html.erb within layouts/application (Duration: 7.0ms | Allocations: 727)
+  Rendered layout layouts/application.html.erb (Duration: 88.6ms | Allocations: 1626)
+Completed 200 OK in 96ms (Views: 90.3ms | ActiveRecord: 1.2ms | Allocations: 1879)
+
+
+Started GET "/coaches/sign_in" for 172.17.0.1 at 2024-11-16 20:06:09 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Coaches::SessionsController#new as HTML
+  [1m[36mCoach Load (1.7ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? ORDER BY "coaches"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 18ms (ActiveRecord: 1.7ms | Allocations: 1926)
+
+
+Started GET "/" for 172.17.0.1 at 2024-11-16 20:06:10 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CoachesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/index.html.erb within layouts/application
+  [1m[36mCoach Load (1.3ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches"[0m
+  ↳ app/views/coaches/index.html.erb:6
+  Rendered coaches/_coach.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered coaches/index.html.erb within layouts/application (Duration: 11.0ms | Allocations: 768)
+  Rendered layout layouts/application.html.erb (Duration: 106.1ms | Allocations: 1668)
+Completed 200 OK in 114ms (Views: 108.6ms | ActiveRecord: 1.3ms | Allocations: 1913)
+
+
+Started GET "/" for 172.17.0.1 at 2024-11-16 20:12:13 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CoachesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/index.html.erb within layouts/application
+  [1m[36mCoach Load (143.9ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches"[0m
+  ↳ app/views/coaches/index.html.erb:6
+  Rendered coaches/_coach.html.erb (Duration: 6.2ms | Allocations: 165)
+  Rendered coaches/index.html.erb within layouts/application (Duration: 204.9ms | Allocations: 5109)
+  Rendered layout layouts/application.html.erb (Duration: 301.2ms | Allocations: 7318)
+Completed 500 Internal Server Error in 409ms (ActiveRecord: 268.5ms | Allocations: 9066)
+
+
+  
+ActionView::Template::Error (undefined method `user_signed_in?' for #<ActionView::Base:0x00000000023ac8>):
+    14:     <p class="notice"><%= notice %></p>
+    15:     <p class="alert"><%= alert %></p>
+    16: 
+    17:   <% if user_signed_in? %>
+    18:     <%= button_to "Sign Out", destroy_user_session_path, method: :destroy %>
+    19:   <% else %>
+    20:     <%= link_to 'Sign In', new_user_session_path %>
+  
+app/views/layouts/application.html.erb:17
+Started GET "/" for 172.17.0.1 at 2024-11-16 20:14:57 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CoachesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/index.html.erb within layouts/application
+  [1m[36mCoach Load (6.6ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches"[0m
+  ↳ app/views/coaches/index.html.erb:6
+  Rendered coaches/_coach.html.erb (Duration: 10.2ms | Allocations: 165)
+  Rendered coaches/index.html.erb within layouts/application (Duration: 201.0ms | Allocations: 5755)
+  [1m[36mCoach Load (1.6ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? ORDER BY "coaches"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+  Rendered layout layouts/application.html.erb (Duration: 311.2ms | Allocations: 7906)
+Completed 200 OK in 403ms (Views: 89.9ms | ActiveRecord: 275.4ms | Allocations: 9660)
+
+
+Started DELETE "/coaches/sign_out" for 172.17.0.1 at 2024-11-16 20:15:08 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Coaches::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mCoach Load (2.3ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? ORDER BY "coaches"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 191ms (ActiveRecord: 2.3ms | Allocations: 2683)
+
+
+Started GET "/" for 172.17.0.1 at 2024-11-16 20:15:09 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CoachesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/index.html.erb within layouts/application
+  [1m[36mCoach Load (1.3ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches"[0m
+  ↳ app/views/coaches/index.html.erb:6
+  Rendered coaches/_coach.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered coaches/index.html.erb within layouts/application (Duration: 9.1ms | Allocations: 720)
+  Rendered layout layouts/application.html.erb (Duration: 102.9ms | Allocations: 1766)
+Completed 200 OK in 112ms (Views: 104.9ms | ActiveRecord: 1.3ms | Allocations: 2011)
+
+
+Started GET "/coaches/1" for 172.17.0.1 at 2024-11-16 20:15:23 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CoachesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCoach Load (1.6ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/coaches_controller.rb:63:in `set_coach'
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/show.html.erb within layouts/application
+  Rendered coaches/_coach.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered coaches/show.html.erb within layouts/application (Duration: 12.0ms | Allocations: 617)
+  Rendered layout layouts/application.html.erb (Duration: 98.6ms | Allocations: 1610)
+Completed 200 OK in 140ms (Views: 102.3ms | ActiveRecord: 1.5ms | Allocations: 2917)
+
+
+Started GET "/coaches/sign_in" for 172.17.0.1 at 2024-11-16 20:15:33 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Coaches::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/sessions/new.html.erb within layouts/application
+  Rendered coaches/shared/_links.html.erb (Duration: 9.2ms | Allocations: 543)
+  Rendered coaches/sessions/new.html.erb within layouts/application (Duration: 141.7ms | Allocations: 4186)
+  Rendered layout layouts/application.html.erb (Duration: 236.3ms | Allocations: 5238)
+Completed 200 OK in 283ms (Views: 276.3ms | ActiveRecord: 0.0ms | Allocations: 6463)
+
+
+Started POST "/coaches/sign_in" for 172.17.0.1 at 2024-11-16 20:15:44 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Coaches::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "coach"=>{"email"=>"Jose@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mCoach Load (1.7ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."email" = ? ORDER BY "coaches"."id" ASC LIMIT ?[0m  [["email", "jose@gmail.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/coaches/1
+Completed 303 See Other in 390ms (ActiveRecord: 1.7ms | Allocations: 3066)
+
+
+Started GET "/coaches/1" for 172.17.0.1 at 2024-11-16 20:15:46 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CoachesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCoach Load (1.5ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/coaches_controller.rb:63:in `set_coach'
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/show.html.erb within layouts/application
+  Rendered coaches/_coach.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered coaches/show.html.erb within layouts/application (Duration: 4.4ms | Allocations: 473)
+  [1m[36mCoach Load (1.6ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? ORDER BY "coaches"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+  Rendered layout layouts/application.html.erb (Duration: 104.4ms | Allocations: 2058)
+Completed 200 OK in 204ms (Views: 192.0ms | ActiveRecord: 3.0ms | Allocations: 2642)
+
+
+Started GET "/rails/info/routes" for 172.17.0.1 at 2024-11-16 20:18:06 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::InfoController#routes as HTML
+  Rendering layout /usr/local/bundle/gems/railties-7.1.4.2/lib/rails/templates/layouts/application.html.erb
+  Rendering /usr/local/bundle/gems/railties-7.1.4.2/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /usr/local/bundle/gems/actionpack-7.1.4.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [68 times] (Duration: 26.1ms | Allocations: 17051)
+  Rendered /usr/local/bundle/gems/actionpack-7.1.4.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (Duration: 97.5ms | Allocations: 775)
+  Rendered /usr/local/bundle/gems/railties-7.1.4.2/lib/rails/templates/rails/info/routes.html.erb within layouts/application (Duration: 136.6ms | Allocations: 24045)
+  Rendered layout /usr/local/bundle/gems/railties-7.1.4.2/lib/rails/templates/layouts/application.html.erb (Duration: 141.2ms | Allocations: 24306)
+Completed 200 OK in 151ms (Views: 145.6ms | ActiveRecord: 0.0ms | Allocations: 25242)
+
+
+Started GET "//teams/new" for 172.17.0.1 at 2024-11-16 20:18:40 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TeamsController#new as HTML
+  [1m[36mCoach Load (12.2ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? ORDER BY "coaches"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering teams/new.html.erb within layouts/application
+  [1m[36mPlayer Load (2.5ms)[0m  [1m[34mSELECT "players".* FROM "players"[0m
+  ↳ app/views/teams/_form.html.erb:20
+  Rendered teams/_form.html.erb (Duration: 206.0ms | Allocations: 10959)
+  Rendered teams/new.html.erb within layouts/application (Duration: 279.1ms | Allocations: 11232)
+  Rendered layout layouts/application.html.erb (Duration: 389.1ms | Allocations: 12611)
+Completed 200 OK in 659ms (Views: 407.3ms | ActiveRecord: 145.9ms | Allocations: 26813)
+
+
+Started POST "/teams" for 172.17.0.1 at 2024-11-16 20:18:56 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TeamsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "team"=>{"name"=>"Chelsea", "player_ids"=>["", "1", "2", "3", "4"]}, "commit"=>"Create Team"}
+  [1m[36mCoach Load (1.5ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? ORDER BY "coaches"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPlayer Load (1.7ms)[0m  [1m[34mSELECT "players".* FROM "players" WHERE "players"."id" IN (?, ?, ?, ?)[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4]]
+  ↳ app/controllers/teams_controller.rb:25:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/teams_controller.rb:35:in `block in create'
+  [1m[36mTeam Exists? (6.4ms)[0m  [1m[34mSELECT 1 AS one FROM "teams" WHERE "teams"."name" = ? AND "teams"."coach_id" = ? LIMIT ?[0m  [["name", "Chelsea"], ["coach_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/teams_controller.rb:35:in `block in create'
+  [1m[36mTeam Create (1.8ms)[0m  [1m[32mINSERT INTO "teams" ("name", "members", "coach_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Chelsea"], ["members", nil], ["coach_id", 1], ["created_at", "2024-11-16 20:18:56.987928"], ["updated_at", "2024-11-16 20:18:56.987928"]]
+  ↳ app/controllers/teams_controller.rb:35:in `block in create'
+  [1m[36mTeam::HABTM_Players Create (0.4ms)[0m  [1m[32mINSERT INTO "players_teams" ("team_id", "player_id") VALUES (?, ?)[0m  [["team_id", 1], ["player_id", 1]]
+  ↳ app/controllers/teams_controller.rb:35:in `block in create'
+  [1m[36mTeam::HABTM_Players Create (0.2ms)[0m  [1m[32mINSERT INTO "players_teams" ("team_id", "player_id") VALUES (?, ?)[0m  [["team_id", 1], ["player_id", 2]]
+  ↳ app/controllers/teams_controller.rb:35:in `block in create'
+  [1m[36mTeam::HABTM_Players Create (0.2ms)[0m  [1m[32mINSERT INTO "players_teams" ("team_id", "player_id") VALUES (?, ?)[0m  [["team_id", 1], ["player_id", 3]]
+  ↳ app/controllers/teams_controller.rb:35:in `block in create'
+  [1m[36mTeam::HABTM_Players Create (0.3ms)[0m  [1m[32mINSERT INTO "players_teams" ("team_id", "player_id") VALUES (?, ?)[0m  [["team_id", 1], ["player_id", 4]]
+  ↳ app/controllers/teams_controller.rb:35:in `block in create'
+  [1m[36mTRANSACTION (23.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/teams_controller.rb:35:in `block in create'
+Redirected to http://localhost:3000/teams/1
+Completed 302 Found in 235ms (ActiveRecord: 39.1ms | Allocations: 12249)
+
+
+Started GET "/teams/1" for 172.17.0.1 at 2024-11-16 20:18:57 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TeamsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCoach Load (5.6ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? ORDER BY "coaches"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTeam Load (1.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/teams_controller.rb:71:in `set_team'
+  Rendering layout layouts/application.html.erb
+  Rendering teams/show.html.erb within layouts/application
+  Rendered teams/_team.html.erb (Duration: 8.7ms | Allocations: 181)
+  Rendered teams/show.html.erb within layouts/application (Duration: 60.2ms | Allocations: 733)
+  Rendered layout layouts/application.html.erb (Duration: 156.2ms | Allocations: 1747)
+Completed 200 OK in 301ms (Views: 159.5ms | ActiveRecord: 6.8ms | Allocations: 4347)
+
+
+Started GET "/rails/info/routes" for 172.17.0.1 at 2024-11-16 20:20:10 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::InfoController#routes as HTML
+  Rendering layout /usr/local/bundle/gems/railties-7.1.4.2/lib/rails/templates/layouts/application.html.erb
+  Rendering /usr/local/bundle/gems/railties-7.1.4.2/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /usr/local/bundle/gems/actionpack-7.1.4.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [68 times] (Duration: 23.0ms | Allocations: 16892)
+  Rendered /usr/local/bundle/gems/actionpack-7.1.4.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (Duration: 1.5ms | Allocations: 672)
+  Rendered /usr/local/bundle/gems/railties-7.1.4.2/lib/rails/templates/rails/info/routes.html.erb within layouts/application (Duration: 37.4ms | Allocations: 23668)
+  Rendered layout /usr/local/bundle/gems/railties-7.1.4.2/lib/rails/templates/layouts/application.html.erb (Duration: 41.8ms | Allocations: 23925)
+Completed 200 OK in 53ms (Views: 46.6ms | ActiveRecord: 0.0ms | Allocations: 24676)
+
+
+Started GET "/events/new" for 172.17.0.1 at 2024-11-16 20:20:52 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 79.6ms | Allocations: 1897)
+  Rendered events/new.html.erb within layouts/application (Duration: 250.1ms | Allocations: 2169)
+  [1m[36mCoach Load (8.2ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? ORDER BY "coaches"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+  Rendered layout layouts/application.html.erb (Duration: 384.3ms | Allocations: 8515)
+Completed 200 OK in 699ms (Views: 395.7ms | ActiveRecord: 115.4ms | Allocations: 14962)
+
+
+Started GET "/events/new" for 172.17.0.1 at 2024-11-16 20:22:12 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 10.5ms | Allocations: 1602)
+  Rendered events/new.html.erb within layouts/application (Duration: 35.3ms | Allocations: 1872)
+  [1m[36mCoach Load (9.1ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? ORDER BY "coaches"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+  Rendered layout layouts/application.html.erb (Duration: 161.5ms | Allocations: 8196)
+Completed 200 OK in 296ms (Views: 168.4ms | ActiveRecord: 100.7ms | Allocations: 13827)
+
+
+Started POST "/events" for 172.17.0.1 at 2024-11-16 20:22:35 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "event"=>{"name"=>"Practice", "date"=>"2024-11-16T16:30", "location"=>"London", "team_id"=>""}, "commit"=>"Create Event"}
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 855)
+
+
+  
+NameError (undefined local variable or method `current_team' for #<EventsController:0x0000000003a0e8>):
+  
+app/controllers/events_controller.rb:25:in `create'
+Started POST "/events" for 172.17.0.1 at 2024-11-16 20:24:37 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "event"=>{"name"=>"Practice", "date"=>"2024-11-16T16:30", "location"=>"London", "team_id"=>""}, "commit"=>"Create Event"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/events_controller.rb:31:in `block in create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/events_controller.rb:31:in `block in create'
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 10.1ms | Allocations: 1754)
+  Rendered events/new.html.erb within layouts/application (Duration: 38.0ms | Allocations: 2023)
+  [1m[36mCoach Load (10.0ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? ORDER BY "coaches"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+  Rendered layout layouts/application.html.erb (Duration: 168.9ms | Allocations: 8351)
+Completed 422 Unprocessable Content in 386ms (Views: 199.9ms | ActiveRecord: 144.3ms | Allocations: 18816)
+
+
+Started POST "/events" for 172.17.0.1 at 2024-11-16 20:24:48 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "event"=>{"name"=>"Practice", "date"=>"2024-11-16T16:30", "location"=>"London", "team_id"=>""}, "commit"=>"Create Event"}
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 2.9ms | Allocations: 1186)
+  Rendered events/new.html.erb within layouts/application (Duration: 5.4ms | Allocations: 1265)
+  [1m[36mCoach Load (1.5ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? ORDER BY "coaches"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+  Rendered layout layouts/application.html.erb (Duration: 114.8ms | Allocations: 2857)
+Completed 422 Unprocessable Content in 129ms (Views: 117.7ms | ActiveRecord: 1.5ms | Allocations: 4018)
+
+
+Started POST "/events" for 172.17.0.1 at 2024-11-16 20:27:54 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "event"=>{"name"=>"Practice", "date"=>"2024-11-16T16:30", "location"=>"London", "team_id"=>""}, "commit"=>"Create Event"}
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 3.2ms | Allocations: 1186)
+  Rendered events/new.html.erb within layouts/application (Duration: 5.9ms | Allocations: 1265)
+  [1m[36mCoach Load (1.5ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? ORDER BY "coaches"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+  Rendered layout layouts/application.html.erb (Duration: 111.2ms | Allocations: 2872)
+Completed 422 Unprocessable Content in 124ms (Views: 115.7ms | ActiveRecord: 1.5ms | Allocations: 4026)
+
+
+Started GET "/events/new" for 172.17.0.1 at 2024-11-16 20:28:09 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (Duration: 4.7ms | Allocations: 1089)
+  Rendered events/new.html.erb within layouts/application (Duration: 7.0ms | Allocations: 1168)
+  [1m[36mCoach Load (1.3ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? ORDER BY "coaches"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:16
+  Rendered layout layouts/application.html.erb (Duration: 111.5ms | Allocations: 2766)
+Completed 200 OK in 121ms (Views: 114.7ms | ActiveRecord: 1.3ms | Allocations: 3023)
+
+

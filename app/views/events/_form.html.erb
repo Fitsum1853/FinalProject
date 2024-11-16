@@ -27,8 +27,8 @@
   </div>
 
   <div>
-    <%= form.label :team_id, style: "display: block" %>
-    <%= form.text_field :team_id %>
+    <%= form.label :team_id, "Team", style: "display: block" %>
+    <%= form.collection_select :team_id, Team.all, :id, :name, { prompt: "Select a team" }, { class: "form-control" } %>
   </div>
 
   <div>
