@@ -9,6 +9,8 @@ class EventsController < ApplicationController
 
   # GET /events/1 or /events/1.json
   def show
+    @team = Team.find(params[:team_id])    # Find the team using the team_id from the route
+    @event = @team.events.find(params[:id])  # Find the event within that team
   end
 
   # GET /events/new
@@ -60,9 +62,9 @@ class EventsController < ApplicationController
   # DELETE /events/1 or /events/1.json
   def destroy
     @event.destroy!
-
+  
     respond_to do |format|
-      format.html { redirect_to events_path, status: :see_other, notice: "Event was successfully destroyed." }
+      format.html { redirect_to team_events_path(@event.team), status: :see_other, notice: "Event was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -71,6 +73,7 @@ class EventsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])
+      @team = @event.team
     end
 
     # Only allow a list of trusted parameters through.

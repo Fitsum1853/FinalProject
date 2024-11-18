@@ -6,17 +6,21 @@
   <div class="team">
     <h2><%= team.name %></h2>
     <p><strong>Coach:</strong> <%= team.coach.first_name %> <%= team.coach.last_name %></p>
-     <%= link_to 'View Events', team_events_path(team) %>
-     <%= link_to 'Back to Welcome Page', root_path, class: 'btn btn-primary' %>
+
+    <!-- Common links for all visitors -->
+    <%= link_to 'View Events', team_events_path(team), class: 'btn btn-info' %>
 
     <% if coach_signed_in? %>
-      <%= link_to 'View Events', team_events_path(team) %> | 
-      <%= link_to 'Show this team', team_path(team) %>
+      <!-- Additional links for logged-in coaches -->
+      <%= link_to 'Show this team', team_path(team), class: 'btn btn-secondary' %>
     <% end %>
   </div>
 <% end %>
 
+<!-- Links for logged-in coaches -->
 <% if coach_signed_in? %>
-  <%= link_to 'New Team', new_team_path %>
-  <%= link_to 'Back to Welcome Page', root_path, class: 'btn btn-primary' %>
+  <%= link_to 'New Team', new_team_path, class: 'btn btn-success' %>
 <% end %>
+
+<!-- Back to Welcome Page (common for all) -->
+<%= link_to 'Back to Welcome Page', root_path, class: 'btn btn-primary mt-3' %>

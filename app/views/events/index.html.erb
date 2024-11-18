@@ -8,18 +8,20 @@
     <p><strong>Date:</strong> <%= event.date %></p>
     <p><strong>Location:</strong> <%= event.location %></p>
     <p><strong>Team:</strong> <%= event.team.name %></p>
-    <%= link_to 'Back to Teams', teams_path, class: 'btn btn-primary' %>
-
 
     <% if coach_signed_in? %>
-      <%= link_to 'Show this event', event_path(event) %> | 
-      <%= link_to 'Edit', edit_event_path(event) %> | 
-      <%= link_to 'Delete', event_path(event), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <!-- Links for logged-in coaches -->
+      <%= link_to 'Show this event', team_event_path(event.team, event), class: 'btn btn-secondary' %>
+      <%= link_to 'Edit', edit_team_event_path(event.team, event), class: 'btn btn-warning' %>
+      <%= link_to 'Delete', team_event_path(event.team, event), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
     <% end %>
   </div>
 <% end %>
 
+<!-- Links for logged-in coaches -->
 <% if coach_signed_in? %>
-  <%= link_to 'New Event', new_event_path %>
-  <%= link_to 'Back to Teams', teams_path, class: 'btn btn-primary' %>
+  <%= link_to 'New Event', new_event_path, class: 'btn btn-success mt-3' %>
 <% end %>
+
+<!-- Back to Teams button -->
+<%= link_to 'Back to Teams', teams_path, class: 'btn btn-primary mt-3' %>

@@ -9,14 +9,16 @@ Rails.application.routes.draw do
   # Root and Welcome page
   root 'welcome#index'
 
+  get 'dashboard', to: 'teams#dashboard'
+
   # Public routes
-  resources :teams, only: [:index, :show] do
-    resources :events, only: [:index, :show]
+  resources :teams do
+    resources :events
   end
 
   # Admin routes
-  resources :events, except: [:index, :show]
-  resources :teams, except: [:index, :show]
+  resources :events, except: [:index, :show] 
+  resources :teams, except: [:index, :show] 
   resources :coaches
 
   # Health check

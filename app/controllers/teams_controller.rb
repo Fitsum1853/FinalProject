@@ -24,6 +24,13 @@ class TeamsController < ApplicationController
   def edit
   end
 
+  # Dashboard for after the coach logs in
+
+  def dashboard
+    @coach = current_coach
+    @teams = @coach.teams
+  end
+
   # POST /teams or /teams.json
   def create
     @team = Team.new(team_params)
