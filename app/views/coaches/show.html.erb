@@ -4,7 +4,8 @@
 
 <div>
   <%= link_to "Edit this coach", edit_coach_path(@coach) %> |
-  <%= link_to "Back to coaches", coaches_path %>
+  <%= link_to "Back to coaches", coaches_path %> |
+  <%= link_to "Back to dashboard", dashboard_path %>
 
   <%= button_to "Destroy this coach", @coach, method: :delete %>
 </div>

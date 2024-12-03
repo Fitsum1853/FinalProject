@@ -1,5 +1,10 @@
 <h1>Welcome, <%= @coach.first_name %>!</h1>
 
+<p>
+<%= link_to "Coach", @coach %>|
+
+<%= link_to 'New Team', new_team_path, class: 'btn btn-success' %>
+</p>
 <h2>Teams<h2>
 <table class="table">
   <thead>

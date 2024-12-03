@@ -1,16 +1,15 @@
-<!-- welcome/index.html.erb -->
+<div class="container text-center mt-5">
+  <h1>Welcome to My Team</h1>
+  <% if coach_signed_in? %>
+  <p>Welcome, <%= current_coach.first_name %>! You are logged in.</p>
+  <%= button_to "Sign Out", destroy_coach_session_path, method: :delete, class: "btn btn-danger" %>
+<% else %>
+  <p>Welcome! Please sign in or sign up to get started.</p>
+  <%= link_to "Sign In", new_coach_session_path, class: "btn btn-primary" %>
+  <%= link_to "Sign Up", new_coach_registration_path, class: "btn btn-success" %>
+<% end %>
 
-<div class="container d-flex justify-content-center" style="height: 100vh;">
-  <div class="text-center">
-    <h1>Welcome to MyTeam</h1>
+<hr>
 
-    <% if coach_signed_in? %>
-      <p>Welcome, <%= current_coach.first_name %>! You are logged in.</p>
-      <%= button_to "Sign Out", destroy_coach_session_path, method: :delete, class: "btn btn-danger" %>
-    <% end %>
-
-    <hr>
-
-    <%= link_to "View Teams", teams_path, class: "btn btn-info" %>
-  </div>
+<p>Manage your teams and events with ease!</p>
 </div>
