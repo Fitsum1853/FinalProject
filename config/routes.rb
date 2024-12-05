@@ -13,8 +13,10 @@ Rails.application.routes.draw do
 
   # Public routes
   resources :teams do
-    resources :events
+    get 'events_json', to: 'events#team_events_json' # JSON endpoint for team events
+    resources :events # Includes all actions for events (index, show, new, create, edit, update, destroy)
   end
+
 
   # Admin routes
   resources :events, except: [:index, :show] 

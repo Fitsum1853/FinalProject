@@ -14,10 +14,8 @@
  *= require_self
  */
 
+
   .navbar-logo {
-    width: 70px; /* Adjust logo width */
+    width: 80px; /* Adjust logo width */
     height: auto;
   }
-
-
-  

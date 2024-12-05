@@ -76,3 +76,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'

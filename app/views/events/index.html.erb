@@ -1,27 +1,77 @@
-<p style="color: green"><%= notice %></p>
+<div class="container-fluid">
+  <% if notice %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <%= notice %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
 
-<h1>Events</h1>
+  <div class="row">
+    <div class="col-12">
+      <h1 class="my-4">Events for <%= @team.name %></h1>
 
-<% @events.each do |event| %>
-  <div class="event">
-    <h2><%= event.name %></h2>
-    <p><strong>Date:</strong> <%= event.date %></p>
-    <p><strong>Location:</strong> <%= event.location %></p>
-    <p><strong>Team:</strong> <%= event.team.name %></p>
+      <div id="calendar" class="mb-4" data-team-id="<%= @team.id %>"></div>
 
-    <% if coach_signed_in? %>
-      <!-- Links for logged-in coaches -->
-      <%= link_to 'Show this event', team_event_path(event.team, event), class: 'btn btn-secondary' %>
-      <%= link_to 'Edit', edit_team_event_path(event.team, event), class: 'btn btn-warning' %>
-      <%= link_to 'Delete', team_event_path(event.team, event), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-    <% end %>
+      <div class="row event-list">
+        <% @events.each do |event| %>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h2 class="card-title h4"><%= event.name %></h2>
+                <p class="card-text">
+                  <strong>Date:</strong> <%= event.date.in_time_zone("Central Time (US & Canada)").strftime("%Y-%m-%d %I:%M %p") %><br>
+                  <strong>Location:</strong> <%= event.location %><br>
+                  <strong>Team:</strong> <%= event.team.name %>
+                </p>
+
+                <% if coach_signed_in? %>
+                  <div class="d-flex justify-content-between">
+                    <%= link_to 'Show', team_event_path(event.team, event), class: 'btn btn-sm btn-outline-secondary' %>
+                    <%= link_to 'Edit', edit_team_event_path(event.team, event), class: 'btn btn-sm btn-outline-warning' %>
+                    <%= link_to 'Delete', team_event_path(event.team, event), 
+                        method: :delete, 
+                        data: { confirm: 'Are you sure?' }, 
+                        class: 'btn btn-sm btn-outline-danger' %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="mt-3">
+        <% if coach_signed_in? %>
+          <%= link_to 'Create New Event', new_event_path, class: 'btn btn-success me-2' %>
+        <% end %>
+        <%= link_to 'Back to Teams', teams_path, class: 'btn btn-primary' %>
+      </div>
+    </div>
   </div>
-<% end %>
+</div>
 
-<!-- Links for logged-in coaches -->
-<% if coach_signed_in? %>
-  <%= link_to 'New Event', new_event_path, class: 'btn btn-success mt-3' %>
-<% end %>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+  var teamId = calendarEl.getAttribute('data-team-id');
 
-<!-- Back to Teams button -->
-<%= link_to 'Back to Teams', teams_path, class: 'btn btn-primary mt-3' %>
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    events: `/teams/${teamId}/events_json`,
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay'
+    },
+    themeSystem: 'bootstrap5', // Bootstrap 5 styling for FullCalendar
+    timeZone: 'local', // Use local time
+    eventTimeFormat: { // Format time as 12-hour with AM/PM
+      hour: '2-digit',
+      minute: '2-digit',
+      meridiem: 'short',
+      hour12: true
+    }
+  });
+  calendar.render();
+});
+</script>

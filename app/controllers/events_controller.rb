@@ -1,10 +1,31 @@
 class EventsController < ApplicationController
-  before_action :authenticate_coach!, except: [:index, :show]
-  before_action :set_event, only: %i[ show edit update destroy ]
+  before_action :authenticate_coach!, except: [:index, :show, :team_events_json] # Exclude team_events_json
+  before_action :set_event, only: %i[show edit update destroy]
 
-  # GET /events or /events.json
+  # events json for calendar
+  def team_events_json
+    @team = Team.find(params[:team_id])
+    @events = @team.events
+  
+    json_response = @events.map do |event|
+      {
+        id: event.id,
+        title: event.name, # Correctly mapped for FullCalendar
+        start: event.date.in_time_zone.strftime('%Y-%m-%d %H:%M'), # Converts to local time & 24-hour format
+        allDay: false,
+        location: event.location
+      }
+    end
+  
+    Rails.logger.debug "Generated JSON: #{json_response.to_json}"
+  
+    render json: json_response
+  end
+
+  # GET /events
   def index
-    @events = Event.all
+    @team = Team.find(params[:team_id]) # Fetch the specific team
+    @events = @team.events             # Fetch events for the team
   end
 
   # GET /events/1 or /events/1.json
