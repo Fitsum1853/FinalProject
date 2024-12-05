@@ -450,3 +450,182 @@ Processing by Coaches::SessionsController#new as HTML
   Rendered layout layouts/application.html.erb (Duration: 4.8ms | Allocations: 2281)
 Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 0.0ms | Allocations: 2698)
   [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (5.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCoach Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "coaches" WHERE "coaches"."email" = ? LIMIT ?[0m  [["email", "coach1@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCoach Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "coaches" WHERE "coaches"."email" = ? LIMIT ?[0m  [["email", "coach1@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCoach Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "coaches" WHERE "coaches"."email" = ? LIMIT ?[0m  [["email", "coach1@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoach Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "coaches" WHERE "coaches"."email" = ? LIMIT ?[0m  [["email", "duplicate@example.com"], ["LIMIT", 1]]
+  [1m[36mCoach Create (1.4ms)[0m  [1m[32mINSERT INTO "coaches" ("first_name", "last_name", "created_at", "updated_at", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["first_name", "John"], ["last_name", "Doe"], ["created_at", "2024-12-05 03:36:17.675075"], ["updated_at", "2024-12-05 03:36:17.675075"], ["email", "duplicate@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mCoach Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "coaches" WHERE "coaches"."email" = ? LIMIT ?[0m  [["email", "duplicate@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (6.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/coaches/sign_up" for 127.0.0.1 at 2024-12-05 03:38:30 +0000
+Processing by Coaches::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/registrations/new.html.erb within layouts/application
+  Rendered coaches/shared/_error_messages.html.erb (Duration: 5.3ms | Allocations: 222)
+  Rendered coaches/shared/_links.html.erb (Duration: 5.6ms | Allocations: 512)
+  Rendered coaches/registrations/new.html.erb within layouts/application (Duration: 91.0ms | Allocations: 3956)
+  Rendered layout layouts/application.html.erb (Duration: 837.9ms | Allocations: 28745)
+Completed 200 OK in 3246ms (Views: 3114.9ms | ActiveRecord: 3.0ms | Allocations: 322117)
+Started GET "/assets/fullcalendar-730cd26ba59190d31c008570b06861f923e6996145fb7eede8959d6b00edce2c.css" for 127.0.0.1 at 2024-12-05 03:38:33 +0000
+Started GET "/assets/application-dcc1e4c012cd144a9fd914807460490a0747e327fdd8d6091b73ad1299239a40.css" for 127.0.0.1 at 2024-12-05 03:38:33 +0000
+Started GET "/assets/my-team-high-resolution-logo-d9c105ec39752b4e611ecbefcbb0e74eedffd687f3dacea69772d0120ff44edb.png" for 127.0.0.1 at 2024-12-05 03:38:33 +0000
+Started POST "/coaches" for 127.0.0.1 at 2024-12-05 03:38:34 +0000
+Processing by Coaches::RegistrationsController#create as HTML
+  Parameters: {"coach"=>{"first_name"=>"Capybara", "last_name"=>"Rspec", "email"=>"cr@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoach Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "coaches" WHERE "coaches"."email" = ? LIMIT ?[0m  [["email", "cr@gmail.com"], ["LIMIT", 1]]
+  [1m[36mCoach Create (2.0ms)[0m  [1m[32mINSERT INTO "coaches" ("first_name", "last_name", "created_at", "updated_at", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["first_name", "Capybara"], ["last_name", "Rspec"], ["created_at", "2024-12-05 03:38:35.001739"], ["updated_at", "2024-12-05 03:38:35.001739"], ["email", "cr@gmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://127.0.0.1:35351/dashboard
+Completed 303 See Other in 122ms (ActiveRecord: 3.4ms | Allocations: 5226)
+Started GET "/dashboard" for 127.0.0.1 at 2024-12-05 03:38:35 +0000
+Processing by TeamsController#dashboard as HTML
+  [1m[36mCoach Load (0.2ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? ORDER BY "coaches"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering teams/dashboard.html.erb within layouts/application
+  [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."coach_id" = ?[0m  [["coach_id", 1]]
+  Rendered teams/dashboard.html.erb within layouts/application (Duration: 22.2ms | Allocations: 1781)
+  Rendered layout layouts/application.html.erb (Duration: 26.1ms | Allocations: 3338)
+Completed 200 OK in 146ms (Views: 34.0ms | ActiveRecord: 0.6ms | Allocations: 9623)
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/coaches/sign_up" for 127.0.0.1 at 2024-12-05 03:38:35 +0000
+Processing by Coaches::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/registrations/new.html.erb within layouts/application
+  Rendered coaches/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 13)
+  Rendered coaches/shared/_links.html.erb (Duration: 0.2ms | Allocations: 71)
+  Rendered coaches/registrations/new.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1162)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 2678)
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.0ms | Allocations: 3133)
+Started POST "/coaches" for 127.0.0.1 at 2024-12-05 03:38:37 +0000
+Processing by Coaches::RegistrationsController#create as HTML
+  Parameters: {"coach"=>{"first_name"=>"", "last_name"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/registrations/new.html.erb within layouts/application
+  Rendered coaches/shared/_error_messages.html.erb (Duration: 2.2ms | Allocations: 1417)
+  Rendered coaches/shared/_links.html.erb (Duration: 0.4ms | Allocations: 70)
+  Rendered coaches/registrations/new.html.erb within layouts/application (Duration: 10.2ms | Allocations: 4377)
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 5892)
+Completed 422 Unprocessable Content in 22ms (Views: 18.8ms | ActiveRecord: 0.0ms | Allocations: 6866)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/coaches/sign_up" for 127.0.0.1 at 2024-12-05 03:38:37 +0000
+Processing by Coaches::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/registrations/new.html.erb within layouts/application
+  Rendered coaches/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 13)
+  Rendered coaches/shared/_links.html.erb (Duration: 0.2ms | Allocations: 70)
+  Rendered coaches/registrations/new.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1156)
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 2671)
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.0ms | Allocations: 3107)
+Started POST "/coaches" for 127.0.0.1 at 2024-12-05 03:38:38 +0000
+Processing by Coaches::RegistrationsController#create as HTML
+  Parameters: {"coach"=>{"first_name"=>"Capybara", "last_name"=>"Rspec", "email"=>"cr@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoach Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "coaches" WHERE "coaches"."email" = ? LIMIT ?[0m  [["email", "cr@gmail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/registrations/new.html.erb within layouts/application
+  Rendered coaches/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 413)
+  Rendered coaches/shared/_links.html.erb (Duration: 0.2ms | Allocations: 70)
+  Rendered coaches/registrations/new.html.erb within layouts/application (Duration: 5.3ms | Allocations: 2023)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 3538)
+Completed 422 Unprocessable Content in 22ms (Views: 11.7ms | ActiveRecord: 2.4ms | Allocations: 4843)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoach Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "coaches" WHERE "coaches"."email" = ? LIMIT ?[0m  [["email", "duplicate@example.com"], ["LIMIT", 1]]
+  [1m[36mCoach Create (0.7ms)[0m  [1m[32mINSERT INTO "coaches" ("first_name", "last_name", "created_at", "updated_at", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["first_name", "John"], ["last_name", "Doe"], ["created_at", "2024-12-05 03:38:38.682981"], ["updated_at", "2024-12-05 03:38:38.682981"], ["email", "duplicate@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/coaches/sign_up" for 127.0.0.1 at 2024-12-05 03:38:38 +0000
+Processing by Coaches::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/registrations/new.html.erb within layouts/application
+  Rendered coaches/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 13)
+  Rendered coaches/shared/_links.html.erb (Duration: 0.5ms | Allocations: 70)
+  Rendered coaches/registrations/new.html.erb within layouts/application (Duration: 5.8ms | Allocations: 1156)
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | Allocations: 2671)
+Completed 200 OK in 15ms (Views: 13.3ms | ActiveRecord: 0.0ms | Allocations: 3107)
+Started POST "/coaches" for 127.0.0.1 at 2024-12-05 03:38:39 +0000
+Processing by Coaches::RegistrationsController#create as HTML
+  Parameters: {"coach"=>{"first_name"=>"Capybara", "last_name"=>"Duplicate", "email"=>"duplicate@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoach Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "coaches" WHERE "coaches"."email" = ? LIMIT ?[0m  [["email", "duplicate@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/registrations/new.html.erb within layouts/application
+  Rendered coaches/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 396)
+  Rendered coaches/shared/_links.html.erb (Duration: 0.3ms | Allocations: 70)
+  Rendered coaches/registrations/new.html.erb within layouts/application (Duration: 4.8ms | Allocations: 1986)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 3501)
+Completed 422 Unprocessable Content in 19ms (Views: 11.1ms | ActiveRecord: 1.6ms | Allocations: 4738)
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/coaches/sign_in" for 127.0.0.1 at 2024-12-05 03:38:39 +0000
+Processing by Coaches::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/sessions/new.html.erb within layouts/application
+  Rendered coaches/shared/_links.html.erb (Duration: 0.3ms | Allocations: 133)
+  Rendered coaches/sessions/new.html.erb within layouts/application (Duration: 22.5ms | Allocations: 1317)
+  Rendered layout layouts/application.html.erb (Duration: 27.9ms | Allocations: 2837)
+Completed 200 OK in 55ms (Views: 54.0ms | ActiveRecord: 0.0ms | Allocations: 3786)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCoach Exists? (2.7ms)[0m  [1m[34mSELECT 1 AS one FROM "coaches" WHERE "coaches"."email" = ? LIMIT ?[0m  [["email", "coach1@example.com"], ["LIMIT", 1]]
+  [1m[36mCoach Create (0.7ms)[0m  [1m[32mINSERT INTO "coaches" ("first_name", "last_name", "created_at", "updated_at", "email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["first_name", "John"], ["last_name", "Doe"], ["created_at", "2024-12-05 03:38:40.016186"], ["updated_at", "2024-12-05 03:38:40.016186"], ["email", "coach1@example.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/coaches/sign_in" for 127.0.0.1 at 2024-12-05 03:38:40 +0000
+Processing by Coaches::SessionsController#create as HTML
+  Parameters: {"coach"=>{"email"=>"coach1@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mCoach Load (0.2ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."email" = ? ORDER BY "coaches"."id" ASC LIMIT ?[0m  [["email", "coach1@example.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:35351/dashboard
+Completed 303 See Other in 21ms (ActiveRecord: 0.2ms | Allocations: 1294)
+Started GET "/dashboard" for 127.0.0.1 at 2024-12-05 03:38:40 +0000
+Processing by TeamsController#dashboard as HTML
+  [1m[36mCoach Load (0.1ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? ORDER BY "coaches"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering teams/dashboard.html.erb within layouts/application
+  [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."coach_id" = ?[0m  [["coach_id", 1]]
+  Rendered teams/dashboard.html.erb within layouts/application (Duration: 2.0ms | Allocations: 287)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 1755)
+Completed 200 OK in 10ms (Views: 7.6ms | ActiveRecord: 0.2ms | Allocations: 2474)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/coaches/sign_in" for 127.0.0.1 at 2024-12-05 03:38:40 +0000
+Processing by Coaches::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/sessions/new.html.erb within layouts/application
+  Rendered coaches/shared/_links.html.erb (Duration: 0.2ms | Allocations: 115)
+  Rendered coaches/sessions/new.html.erb within layouts/application (Duration: 3.6ms | Allocations: 807)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 2322)
+Completed 200 OK in 11ms (Views: 10.4ms | ActiveRecord: 0.0ms | Allocations: 2791)
+Started POST "/coaches/sign_in" for 127.0.0.1 at 2024-12-05 03:38:41 +0000
+Processing by Coaches::SessionsController#create as HTML
+  Parameters: {"coach"=>{"email"=>"wrong_email@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mCoach Load (1.0ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."email" = ? ORDER BY "coaches"."id" ASC LIMIT ?[0m  [["email", "wrong_email@example.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.9ms | Allocations: 447)
+Processing by Coaches::SessionsController#new as HTML
+  Parameters: {"coach"=>{"email"=>"wrong_email@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering layout layouts/application.html.erb
+  Rendering coaches/sessions/new.html.erb within layouts/application
+  Rendered coaches/shared/_links.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered coaches/sessions/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 805)
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | Allocations: 2289)
+Completed 200 OK in 11ms (Views: 9.2ms | ActiveRecord: 0.0ms | Allocations: 2710)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mrollback transaction[0m

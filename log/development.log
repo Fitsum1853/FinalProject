@@ -12142,3 +12142,288 @@ Processing by WelcomeController#index as HTML
 Completed 200 OK in 225ms (Views: 151.0ms | ActiveRecord: 0.0ms | Allocations: 7738)
 
 
+Started GET "/teams" for 172.17.0.1 at 2024-12-05 02:50:06 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (6.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TeamsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering teams/index.html.erb within layouts/application
+  [1m[36mTeam Load (5.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/views/teams/index.html.erb:14
+  [1m[36mCoach Load (1.0ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/teams/index.html.erb:21
+  [1m[36mCoach Load (1.0ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/teams/index.html.erb:21
+  Rendered teams/index.html.erb within layouts/application (Duration: 119.3ms | Allocations: 18237)
+  Rendered layout layouts/application.html.erb (Duration: 3337.3ms | Allocations: 53629)
+Completed 200 OK in 5470ms (Views: 3296.2ms | ActiveRecord: 79.6ms | Allocations: 344577)
+
+
+Started GET "/teams" for 172.17.0.1 at 2024-12-05 02:53:56 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TeamsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering teams/index.html.erb within layouts/application
+  [1m[36mTeam Load (1.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/views/teams/index.html.erb:14
+  [1m[36mCoach Load (0.9ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/teams/index.html.erb:21
+  [1m[36mCoach Load (0.8ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/teams/index.html.erb:21
+  Rendered teams/index.html.erb within layouts/application (Duration: 14.5ms | Allocations: 1543)
+  Rendered layout layouts/application.html.erb (Duration: 120.2ms | Allocations: 3982)
+Completed 200 OK in 135ms (Views: 120.1ms | ActiveRecord: 3.0ms | Allocations: 4480)
+
+
+Started GET "/teams/2/events" for 172.17.0.1 at 2024-12-05 02:53:59 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Parameters: {"team_id"=>"2"}
+  [1m[36mTeam Load (0.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:27:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."team_id" = ?[0m  [["team_id", 2]]
+  ↳ app/views/events/index.html.erb:16
+  Rendered events/index.html.erb within layouts/application (Duration: 19.3ms | Allocations: 7132)
+  Rendered layout layouts/application.html.erb (Duration: 139.9ms | Allocations: 9625)
+Completed 200 OK in 216ms (Views: 143.5ms | ActiveRecord: 7.2ms | Allocations: 12885)
+
+
+Started GET "/teams/2/events_json?start=2024-12-01T00%3A00%3A00-07%3A00&end=2025-01-12T00%3A00%3A00-07%3A00" for 172.17.0.1 at 2024-12-05 02:54:00 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#team_events_json as */*
+  Parameters: {"start"=>"2024-12-01T00:00:00-07:00", "end"=>"2025-01-12T00:00:00-07:00", "team_id"=>"2"}
+  [1m[36mTeam Load (0.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:7:in `team_events_json'
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."team_id" = ?[0m  [["team_id", 2]]
+  ↳ app/controllers/events_controller.rb:10:in `map'
+Generated JSON: [{"id":4,"title":"Game","start":"2024-11-23 11:45","allDay":false,"location":"Stamford Bridge"},{"id":9,"title":"Practice","start":"2024-12-04 05:35","allDay":false,"location":"London"}]
+Completed 200 OK in 18ms (Views: 0.3ms | ActiveRecord: 1.8ms | Allocations: 1066)
+
+
+Started GET "/teams/2/events" for 172.17.0.1 at 2024-12-05 03:04:56 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Parameters: {"team_id"=>"2"}
+  [1m[36mTeam Load (40.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:27:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."team_id" = ?[0m  [["team_id", 2]]
+  ↳ app/views/events/index.html.erb:16
+  Rendered events/index.html.erb within layouts/application (Duration: 6.3ms | Allocations: 928)
+  Rendered layout layouts/application.html.erb (Duration: 113.8ms | Allocations: 3363)
+Completed 200 OK in 172ms (Views: 115.5ms | ActiveRecord: 71.4ms | Allocations: 4248)
+
+
+Started GET "/teams/2/events_json?start=2024-12-01T00%3A00%3A00-07%3A00&end=2025-01-12T00%3A00%3A00-07%3A00" for 172.17.0.1 at 2024-12-05 03:04:56 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#team_events_json as */*
+  Parameters: {"start"=>"2024-12-01T00:00:00-07:00", "end"=>"2025-01-12T00:00:00-07:00", "team_id"=>"2"}
+  [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:7:in `team_events_json'
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."team_id" = ?[0m  [["team_id", 2]]
+  ↳ app/controllers/events_controller.rb:10:in `map'
+Generated JSON: [{"id":4,"title":"Game","start":"2024-11-23 11:45","allDay":false,"location":"Stamford Bridge"},{"id":9,"title":"Practice","start":"2024-12-04 05:35","allDay":false,"location":"London"}]
+Completed 200 OK in 19ms (Views: 0.2ms | ActiveRecord: 2.1ms | Allocations: 1046)
+
+
+Started GET "/" for 172.17.0.1 at 2024-12-05 03:20:26 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 18.0ms | Allocations: 536)
+  Rendered layout layouts/application.html.erb (Duration: 157.7ms | Allocations: 2997)
+Completed 200 OK in 191ms (Views: 163.9ms | ActiveRecord: 0.0ms | Allocations: 3545)
+
+
+Started GET "/teams" for 172.17.0.1 at 2024-12-05 03:26:52 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TeamsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering teams/index.html.erb within layouts/application
+  [1m[36mTeam Load (51.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/views/teams/index.html.erb:14
+  [1m[36mCoach Load (1.0ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/teams/index.html.erb:21
+  [1m[36mCoach Load (0.9ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/teams/index.html.erb:21
+  Rendered teams/index.html.erb within layouts/application (Duration: 64.6ms | Allocations: 1856)
+  Rendered layout layouts/application.html.erb (Duration: 190.5ms | Allocations: 4340)
+Completed 200 OK in 206ms (Views: 101.6ms | ActiveRecord: 90.9ms | Allocations: 4860)
+
+
+Started GET "/" for 172.17.0.1 at 2024-12-05 03:28:25 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 304)
+  Rendered layout layouts/application.html.erb (Duration: 137.0ms | Allocations: 2767)
+Completed 200 OK in 152ms (Views: 140.3ms | ActiveRecord: 0.0ms | Allocations: 3018)
+
+
+Started GET "/teams" for 172.17.0.1 at 2024-12-05 03:29:44 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TeamsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering teams/index.html.erb within layouts/application
+  [1m[36mTeam Load (1.5ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/views/teams/index.html.erb:14
+  [1m[36mCoach Load (1.3ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/teams/index.html.erb:21
+  [1m[36mCoach Load (1.0ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/teams/index.html.erb:21
+  Rendered teams/index.html.erb within layouts/application (Duration: 17.3ms | Allocations: 1541)
+  Rendered layout layouts/application.html.erb (Duration: 153.3ms | Allocations: 4010)
+Completed 200 OK in 169ms (Views: 152.5ms | ActiveRecord: 3.7ms | Allocations: 4507)
+
+
+Started GET "/teams/2/events" for 172.17.0.1 at 2024-12-05 03:29:50 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Parameters: {"team_id"=>"2"}
+  [1m[36mTeam Load (1.6ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:27:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.7ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."team_id" = ?[0m  [["team_id", 2]]
+  ↳ app/views/events/index.html.erb:16
+  Rendered events/index.html.erb within layouts/application (Duration: 8.0ms | Allocations: 934)
+  Rendered layout layouts/application.html.erb (Duration: 114.1ms | Allocations: 3372)
+Completed 200 OK in 130ms (Views: 115.2ms | ActiveRecord: 3.2ms | Allocations: 4009)
+
+
+Started GET "/teams/2/events_json?start=2024-12-01T00%3A00%3A00-07%3A00&end=2025-01-12T00%3A00%3A00-07%3A00" for 172.17.0.1 at 2024-12-05 03:29:51 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#team_events_json as */*
+  Parameters: {"start"=>"2024-12-01T00:00:00-07:00", "end"=>"2025-01-12T00:00:00-07:00", "team_id"=>"2"}
+  [1m[36mTeam Load (1.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:7:in `team_events_json'
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."team_id" = ?[0m  [["team_id", 2]]
+  ↳ app/controllers/events_controller.rb:10:in `map'
+Generated JSON: [{"id":4,"title":"Game","start":"2024-11-23 11:45","allDay":false,"location":"Stamford Bridge"},{"id":9,"title":"Practice","start":"2024-12-04 05:35","allDay":false,"location":"London"}]
+Completed 200 OK in 33ms (Views: 0.5ms | ActiveRecord: 2.8ms | Allocations: 1034)
+
+
+Started GET "/teams" for 172.17.0.1 at 2024-12-05 03:30:10 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TeamsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering teams/index.html.erb within layouts/application
+  [1m[36mTeam Load (1.7ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/views/teams/index.html.erb:14
+  [1m[36mCoach Load (0.8ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/teams/index.html.erb:21
+  [1m[36mCoach Load (1.0ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/teams/index.html.erb:21
+  Rendered teams/index.html.erb within layouts/application (Duration: 16.0ms | Allocations: 1534)
+  Rendered layout layouts/application.html.erb (Duration: 165.1ms | Allocations: 3974)
+Completed 200 OK in 178ms (Views: 164.7ms | ActiveRecord: 3.3ms | Allocations: 4468)
+
+
+Started GET "/" for 172.17.0.1 at 2024-12-05 03:32:12 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 304)
+  Rendered layout layouts/application.html.erb (Duration: 124.4ms | Allocations: 2751)
+Completed 200 OK in 137ms (Views: 126.6ms | ActiveRecord: 0.0ms | Allocations: 3001)
+
+
+Started GET "/teams" for 172.17.0.1 at 2024-12-05 03:33:28 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TeamsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering teams/index.html.erb within layouts/application
+  [1m[36mTeam Load (1.1ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/views/teams/index.html.erb:14
+  [1m[36mCoach Load (0.8ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/teams/index.html.erb:21
+  [1m[36mCoach Load (1.3ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/teams/index.html.erb:21
+  Rendered teams/index.html.erb within layouts/application (Duration: 17.0ms | Allocations: 1534)
+  Rendered layout layouts/application.html.erb (Duration: 136.2ms | Allocations: 3973)
+Completed 200 OK in 152ms (Views: 135.6ms | ActiveRecord: 3.0ms | Allocations: 4464)
+
+
+Started GET "/" for 172.17.0.1 at 2024-12-05 03:33:32 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 313)
+  Rendered layout layouts/application.html.erb (Duration: 99.8ms | Allocations: 2760)
+Completed 200 OK in 109ms (Views: 101.2ms | ActiveRecord: 0.0ms | Allocations: 3010)
+
+
+Started GET "/teams" for 172.17.0.1 at 2024-12-05 03:33:34 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TeamsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering teams/index.html.erb within layouts/application
+  [1m[36mTeam Load (1.4ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  ↳ app/views/teams/index.html.erb:14
+  [1m[36mCoach Load (0.9ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/teams/index.html.erb:21
+  [1m[36mCoach Load (0.9ms)[0m  [1m[34mSELECT "coaches".* FROM "coaches" WHERE "coaches"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/teams/index.html.erb:21
+  Rendered teams/index.html.erb within layouts/application (Duration: 13.8ms | Allocations: 1534)
+  Rendered layout layouts/application.html.erb (Duration: 130.9ms | Allocations: 4018)
+Completed 200 OK in 143ms (Views: 130.0ms | ActiveRecord: 3.1ms | Allocations: 4532)
+
+
+Started GET "/teams/2/events" for 172.17.0.1 at 2024-12-05 03:39:24 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#index as HTML
+  Parameters: {"team_id"=>"2"}
+  [1m[36mTeam Load (45.8ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:27:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (1.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."team_id" = ?[0m  [["team_id", 2]]
+  ↳ app/views/events/index.html.erb:16
+  Rendered events/index.html.erb within layouts/application (Duration: 8.1ms | Allocations: 928)
+  Rendered layout layouts/application.html.erb (Duration: 137.6ms | Allocations: 3392)
+Completed 200 OK in 203ms (Views: 139.4ms | ActiveRecord: 78.7ms | Allocations: 4277)
+
+
+Started GET "/teams/2/events_json?start=2024-12-01T00%3A00%3A00-07%3A00&end=2025-01-12T00%3A00%3A00-07%3A00" for 172.17.0.1 at 2024-12-05 03:39:25 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#team_events_json as */*
+  Parameters: {"start"=>"2024-12-01T00:00:00-07:00", "end"=>"2025-01-12T00:00:00-07:00", "team_id"=>"2"}
+  [1m[36mTeam Load (0.9ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:7:in `team_events_json'
+  [1m[36mEvent Load (0.9ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."team_id" = ?[0m  [["team_id", 2]]
+  ↳ app/controllers/events_controller.rb:10:in `map'
+Generated JSON: [{"id":4,"title":"Game","start":"2024-11-23 11:45","allDay":false,"location":"Stamford Bridge"},{"id":9,"title":"Practice","start":"2024-12-04 05:35","allDay":false,"location":"London"}]
+Completed 200 OK in 20ms (Views: 0.3ms | ActiveRecord: 1.8ms | Allocations: 1034)
+
+
+Started GET "/teams/2/events_json?start=2024-10-27T00%3A00%3A00-06%3A00&end=2024-12-08T00%3A00%3A00-07%3A00" for 172.17.0.1 at 2024-12-05 03:39:57 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#team_events_json as */*
+  Parameters: {"start"=>"2024-10-27T00:00:00-06:00", "end"=>"2024-12-08T00:00:00-07:00", "team_id"=>"2"}
+  [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:7:in `team_events_json'
+  [1m[36mEvent Load (0.9ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."team_id" = ?[0m  [["team_id", 2]]
+  ↳ app/controllers/events_controller.rb:10:in `map'
+Generated JSON: [{"id":4,"title":"Game","start":"2024-11-23 11:45","allDay":false,"location":"Stamford Bridge"},{"id":9,"title":"Practice","start":"2024-12-04 05:35","allDay":false,"location":"London"}]
+Completed 200 OK in 18ms (Views: 0.3ms | ActiveRecord: 1.9ms | Allocations: 1034)
+
+
+Started GET "/teams/2/events_json?start=2024-12-01T00%3A00%3A00-07%3A00&end=2025-01-12T00%3A00%3A00-07%3A00" for 172.17.0.1 at 2024-12-05 03:40:00 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by EventsController#team_events_json as */*
+  Parameters: {"start"=>"2024-12-01T00:00:00-07:00", "end"=>"2025-01-12T00:00:00-07:00", "team_id"=>"2"}
+  [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/events_controller.rb:7:in `team_events_json'
+  [1m[36mEvent Load (0.9ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."team_id" = ?[0m  [["team_id", 2]]
+  ↳ app/controllers/events_controller.rb:10:in `map'
+Generated JSON: [{"id":4,"title":"Game","start":"2024-11-23 11:45","allDay":false,"location":"Stamford Bridge"},{"id":9,"title":"Practice","start":"2024-12-04 05:35","allDay":false,"location":"London"}]
+Completed 200 OK in 18ms (Views: 0.3ms | ActiveRecord: 1.8ms | Allocations: 1033)
+
+
