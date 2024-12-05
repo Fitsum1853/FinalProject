@@ -1,0 +1,77 @@
+<%= form_with(model: event, class: "needs-validation", novalidate: true) do |form| %>
+  <% if event.errors.any? %>
+    <div class="alert alert-danger">
+      <h2 class="alert-heading h4">
+        <%= pluralize(event.errors.count, "error") %> prohibited this event from being saved
+      </h2>
+
+      <ul class="mb-0">
+        <% event.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row g-3">
+    <div class="col-md-6">
+      <div class="mb-3">
+        <%= form.label :name, class: "form-label" %>
+        <%= form.text_field :name, 
+            class: "form-control #{event.errors[:name].any? ? 'is-invalid' : ''}", 
+            required: true %>
+        <div class="invalid-feedback">
+          Please provide an event name.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="mb-3">
+        <%= form.label :date, class: "form-label" %>
+        <%= form.datetime_local_field :date, 
+            class: "form-control #{event.errors[:date].any? ? 'is-invalid' : ''}", 
+            required: true %>
+        <div class="invalid-feedback">
+          Please select an event date and time.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="mb-3">
+        <%= form.label :location, class: "form-label" %>
+        <%= form.text_field :location, 
+            class: "form-control #{event.errors[:location].any? ? 'is-invalid' : ''}", 
+            required: true %>
+        <div class="invalid-feedback">
+          Please provide an event location.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="mb-3">
+        <%= form.label :team_id, "Team", class: "form-label" %>
+        <%= form.collection_select :team_id, 
+            Team.all, 
+            :id, 
+            :name, 
+            { 
+              prompt: "Select a team" 
+            }, 
+            { 
+              class: "form-select #{event.errors[:team_id].any? ? 'is-invalid' : ''}", 
+              required: true 
+            } %>
+        <div class="invalid-feedback">
+          Please select a team.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-3">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

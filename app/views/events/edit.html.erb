@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-8 offset-md-2">
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-primary text-white">
+          <h1 class="h3 mb-0">Editing Event</h1>
+        </div>
+        <div class="card-body">
+          <%= render "form", event: @event %>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <%= link_to 'Show Event', team_event_path(@event.team, @event), class: 'btn btn-info' %>
+        <%= link_to "Back to Events", team_events_path(@event.team), class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Optional: Add form validation
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    if (form) {
+      form.addEventListener('submit', function(event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    }
+  });
+</script>

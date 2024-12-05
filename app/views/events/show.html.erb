@@ -1,0 +1,39 @@
+<div class="container">
+  <% if notice %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <%= notice %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+          <h1 class="card-title display-5 mb-4"><%= @event.name %></h1>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <dl class="row">
+                <dt class="col-sm-4">Date:</dt>
+                <dd class="col-sm-8"><%= @event.date %></dd>
+
+                <dt class="col-sm-4">Location:</dt>
+                <dd class="col-sm-8"><%= @event.location %></dd>
+
+                <dt class="col-sm-4">Team:</dt>
+                <dd class="col-sm-8"><%= @event.team.name %></dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex gap-2">
+        <%= link_to "Edit", edit_event_path(@event), class: "btn btn-warning" %>
+        <%= link_to "Back to Events", team_events_path(@event.team), class: "btn btn-secondary" %>
+        <%= button_to "Delete Event", @event, method: :delete, data: { confirm: "Are you sure you want to delete this event?" }, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+</div>

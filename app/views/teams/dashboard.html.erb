@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+
+    <h1>Welcome, <%= @coach.first_name %>!</h1>
+
+    <p>
+        <%= link_to "Coach", @coach %> |
+        <%= link_to 'New Team', new_team_path, class: 'btn btn-success' %>
+    </p>
+    <h2>Teams</h2>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @teams.each do |team| %>
+                <tr>
+                    <td><%= team.name %></td>
+                    <td>
+                        <%= link_to 'View', team_path(team), class: "btn btn-info btn-sm" %>
+                        <%= link_to 'Edit', edit_team_path(team), class: "btn btn-warning btn-sm" %>
+                        <%= link_to 'Delete', team_path(team), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js

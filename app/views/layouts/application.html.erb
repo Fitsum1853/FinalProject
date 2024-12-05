@@ -1,15 +1,82 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Myteam</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MyTeam</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  </head>
+    <!-- Include Bootstrap CSS via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
 
-  <body>
-    <%= yield %>
+    <!-- Include FullCalendar CSS (from fullcalendar-rails gem) -->
+    <%= stylesheet_link_tag 'fullcalendar', media: 'all' %>
+
+    <!-- Add FullCalendar JS from CDN -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
+
+    <!-- Include Application CSS -->
+    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+
+  <body class="bg-light">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <div class="container-fluid">
+        <!-- Logo -->
+        <%= link_to image_tag("my-team-high-resolution-logo.png", alt: "MyTeam Logo", class: "navbar-logo"), root_path %>
+
+        <!-- Mobile Navbar Toggle -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <%= link_to "Home", root_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Teams", teams_path, class: "nav-link" %>
+            </li>
+            <% if coach_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "Dashboard", dashboard_path, class: "nav-link" %>
+              </li>
+            <% end %>
+          </ul>
+          <ul class="navbar-nav">
+            <% if coach_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "Sign Out", destroy_coach_session_path, method: :delete, class: "nav-link" %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "Sign In", new_coach_session_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Sign Up", new_coach_registration_path, class: "nav-link" %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    <div class="container mt-3">
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

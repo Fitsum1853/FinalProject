@@ -1,0 +1,45 @@
+<div class="container">
+  <% if notice %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <%= notice %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mb-4">Teams</h1>
+
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <% @teams.each do |team| %>
+          <div class="col">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <h2 class="card-title h4 mb-3"><%= team.name %></h2>
+                <p class="card-text">
+                  <strong>Coach:</strong> 
+                  <%= team.coach.first_name %> <%= team.coach.last_name %>
+                </p>
+                
+                <div class="d-flex gap-2 mt-3">
+                  <%= link_to 'View Events', team_events_path(team), class: 'btn btn-sm btn-outline-info' %>
+
+                  <% if coach_signed_in? %>
+                    <%= link_to 'Show Team', team_path(team), class: 'btn btn-sm btn-outline-secondary' %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="mt-4 d-flex gap-2">
+        <% if coach_signed_in? %>
+          <%= link_to 'New Team', new_team_path, class: 'btn btn-success' %>
+        <% end %>
+        <%= link_to 'Back to Welcome Page', root_path, class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+</div>
